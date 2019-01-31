@@ -22,12 +22,13 @@ class Detail extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div>latitude: {this.state.lat}</div>
-        <div>error: {this.state.errMessage}</div>
-      </div>
-    );
+    if (this.state.errMessage && !this.state.lat) {
+      return <div>Error : {this.state.errMessage}</div>;
+    } else if (!this.state.errMessage && this.state.lat) {
+      return <div>latitude : {this.state.lat}</div>;
+    } else {
+      return <div>Loading</div>;
+    }
   }
 }
 
